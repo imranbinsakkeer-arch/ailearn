@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTU CST 401 AI - Module 2 Answers</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .view-btn {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 2px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .view-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        .view-btn:hover:not(.active) {
+            background-color: #eff6ff;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { background-color: #f1f5f9; }
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .syllabus-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 30px;
+        }
+        .syllabus-title { font-weight: bold; color: var(--primary); font-size: 1.1em; margin-bottom: 5px; }
+        
+        /* Answer Cards */
+        .questions-container { display: flex; flex-direction: column; gap: 20px; }
+        .answer-card {
+            background-color: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+        }
+        .answer-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .topic-info { flex: 1; }
+        .answer-topic { font-size: 1.3em; font-weight: bold; color: var(--primary); display: block; margin-bottom: 10px;}
+        
+        /* Exam Questions List */
+        .exam-questions-list {
+            background-color: #f8fafc;
+            border-left: 3px solid #94a3b8;
+            padding: 15px 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95em;
+            color: #475569;
+            margin-bottom: 0;
+            margin-top: 0;
+            list-style-type: none;
+        }
+        .exam-questions-list li { margin-bottom: 8px; padding-left: 10px; text-indent: -10px;}
+        .exam-questions-list li::before { content: "• "; color: var(--primary); font-weight: bold; }
+
+        .toggle-btn {
+            background-color: var(--primary); color: white; border: none; padding: 8px 16px;
+            border-radius: 4px; cursor: pointer; font-weight: bold; margin-left: 20px;
+            white-space: nowrap; align-self: flex-start;
+        }
+        .toggle-btn:hover { background-color: var(--primary-hover); }
+        
+        .answer-body {
+            margin-top: 15px; padding-top: 20px; border-top: 2px dashed var(--border);
+            display: none; color: #1e293b;
+        }
+        
+        /* Typography for Answers */
+        .answer-body h4 { color: #0f172a; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        .answer-body p { margin-bottom: 10px; }
+        .answer-body ul, .answer-body ol { margin-bottom: 15px; padding-left: 25px; }
+        .answer-body li { margin-bottom: 8px; }
+        .answer-body table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .answer-body th, .answer-body td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+        .answer-body th { background-color: #f1f5f9; color: var(--primary); }
+        .diagram-img { max-width: 100%; display: block; margin: 20px auto; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CST 401 AI - Study Portal</h1>
+    
+    <div class="view-toggle">
+        <a href="index.html?mod=2" class="view-btn">Questions</a>
+        <a href="#" class="view-btn active">Answers</a>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs" id="tabs-container">
+        <a href="answer_module1.html" class="tab-btn">Module 1</a>
+        <a href="answer_module2.html" class="tab-btn active">Module 2</a>
+        <a href="answer_module3.html" class="tab-btn">Module 3</a>
+        <a href="answer_module4.html" class="tab-btn">Module 4</a>
+        <a href="answer_module5.html" class="tab-btn">Module 5</a>
+    </div>
+
+    <div class="syllabus-box" id="syllabus-box">
+        <div class="syllabus-title">Module 2 Breakdown</div>
+        <div>Solving Problems by searching-Problem solving Agents, Example problems, Searching for solutions, Uninformed search strategies, Informed search strategies, Heuristic functions.</div>
+    </div>
+
+    <div class="questions-container">
+        
+        <!-- TOPIC 1 -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 1: State Space Search and Representation</span>
+                    <ul class="exam-questions-list">
+                        <li>Q43. Explain the terms a)Search b)Open Loop System c)Abstraction. (3)</li>
+                        <li>Q48. Evaluate a problem as a state space search with an example. (7)</li>
+                        <li>Q45 / Q61. Describe the state space representation of 8-queens problem. (3)</li>
+                        <li>Q53. Write the standard formulation of 8-puzzle problem. (7)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-1', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-1">
+                <h4>Evaluating a problem as a state space search</h4>
+                <p>Definition: Evaluating a problem as a state space search involves defining the problem using five formal components. This creates a "state space" (a mathematical graph of all possible situations) that an AI can search through to find a sequence of actions leading to a goal.</p>
+                <h4>The 5 Components of Problem Formulation:</h4>
+                <ul>
+                    <li><strong>Initial State:</strong> The starting situation of the agent.</li>
+                    <li><strong>Actions:</strong> The set of possible moves available to the agent in any given state.</li>
+                    <li><strong>Transition Model:</strong> A function that describes what each action does (Input: Current State + Action &rarr; Output: New State).</li>
+                    <li><strong>Goal Test:</strong> A condition applied to a single state to determine if it is the target destination.</li>
+                    <li><strong>Path Cost:</strong> A numeric function that assigns a cost to a sequence of actions. The AI aims to minimize this cost.</li>
+                </ul>
+                <h4>Example: 8-Queens Problem (Incremental Formulation)</h4>
+                <p><strong>Problem Description:</strong> The goal is to place 8 queens on a standard 8x8 chessboard so that no two queens attack each other (no two share the same row, column, or diagonal).</p>
+                <ul>
+                    <li><strong>States:</strong> Any arrangement of 0 to 8 queens on the chessboard.</li>
+                    <li><strong>Initial State:</strong> An empty 8x8 board.</li>
+                    <li><strong>Actions:</strong> Add a single queen to any empty square. (Better abstraction: Add a queen to the leftmost empty column in a square that is not already under attack).</li>
+                    <li><strong>Transition Model:</strong> Returns the updated board with the new queen added to the specified square.</li>
+                    <li><strong>Goal Test:</strong> There are exactly 8 queens on the board, and none of them are attacking each other.</li>
+                    <li><strong>Path Cost:</strong> Zero. For this specific problem, we only care about the final correct arrangement, not the number of steps it took to get there.</li>
+                </ul>
+                <h4>Example: 8-Puzzle Problem</h4>
+                <p><strong>Problem Description:</strong> The 8-puzzle consists of a 3x3 board with eight numbered tiles and one blank space. A tile adjacent to the blank space can slide into the space. The objective is to reach a specific target configuration.</p>
+                <ul>
+                    <li><strong>States:</strong> A state description specifies the location of each of the eight tiles and the blank space in one of the nine squares. (Total possible states: 9!/2 = 181,440).</li>
+                    <li><strong>Initial State:</strong> Any valid random starting arrangement of the numbered tiles and the blank space.</li>
+                    <li><strong>Actions:</strong> Instead of moving the tiles, we formulate the actions in terms of the blank space. The possible actions are: Up, Down, Left, Right.</li>
+                    <li><strong>Transition Model:</strong> Given a state and an action, this returns the resulting state. For example, if the action is Left, the model updates the board by swapping the position of the blank space with the tile immediately to its left.</li>
+                    <li><strong>Goal Test:</strong> This checks whether the current state matches the required target configuration (e.g., tiles ordered 1 through 8 with the blank in the bottom right corner).</li>
+                    <li><strong>Path Cost:</strong> Each single step (movement of the blank space) costs exactly 1. Therefore, the total path cost is the total number of moves taken to reach the goal state.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOPIC 2 -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 2: Tree Search vs Graph Search Strategies</span>
+                    <ul class="exam-questions-list">
+                        <li>Q41. List the differences between tree search algorithm and graph search algorithm. (3)</li>
+                        <li>Q57. Discuss the difference between Tree Search and Graph search strategies for finding solutions. (8)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-2', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-2">
+                <h4>1. The Core Concept: Redundant Paths</h4>
+                <p>When an AI agent searches through a state space, there is often more than one way to reach the same state. These are called redundant paths or cycles. How an algorithm handles these paths defines whether it is a Tree Search or a Graph Search.</p>
+                <h4>2. Tree Search Strategy</h4>
+                <ul>
+                    <li><strong>How it works:</strong> It simulates exploring a tree by expanding nodes. It only keeps track of the Frontier.</li>
+                    <li><strong>The Problem:</strong> Tree Search has no "memory" of where it has been. It does not check if a newly generated node is a state it has already visited.</li>
+                    <li><strong>Consequence:</strong> In state spaces with cycles, a Tree Search can get trapped in an infinite loop.</li>
+                </ul>
+                <h4>3. Graph Search Strategy</h4>
+                <ul>
+                    <li><strong>How it works:</strong> It introduces a new data structure called the Explored Set (or "Closed List").</li>
+                    <li><strong>The Solution:</strong> Every time a node is expanded, it is added to the Explored Set. Before adding a newly generated node to the Frontier, the algorithm checks if it is already in the Frontier or the Explored Set. If it is, the node is discarded.</li>
+                    <li><strong>Consequence:</strong> It never explores the same state twice, preventing infinite loops.</li>
+                </ul>
+                <h4>4. Comparison Table</h4>
+                <table>
+                    <thead><tr><th>Feature</th><th>Tree Search</th><th>Graph Search</th></tr></thead>
+                    <tbody>
+                        <tr><td>Memory Structures</td><td>Frontier only.</td><td>Frontier AND Explored Set.</td></tr>
+                        <tr><td>Redundant Paths</td><td>Explores them.</td><td>Prunes them.</td></tr>
+                        <tr><td>Cyclic Environments</td><td>Infinite loops possible.</td><td>Safe from infinite loops.</td></tr>
+                        <tr><td>Space Complexity</td><td>Lower memory.</td><td>Higher memory.</td></tr>
+                        <tr><td>Completeness</td><td>Incomplete in cyclic spaces.</td><td>Always complete in finite spaces.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: A* ALGORITHM -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 4: A* Search Algorithm</span>
+                    <ul class="exam-questions-list">
+                        <li>Write A* algorithm and list the various observations about the algorithm. (5)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-4', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-4">
+                <p>Placeholder: A* Algorithm content to be updated. Refer to diagrams below for the search process.</p>
+                <img src="a1.jpg" alt="A* Algorithm Step 1" class="diagram-img">
+                <img src="a2.jpg" alt="A* Algorithm Step 2" class="diagram-img">
+            </div>
+        </div>
+
+        <!-- TOPIC 5: BEST FIRST SEARCH -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 5: Best First Search</span>
+                    <ul class="exam-questions-list">
+                        <li>Explain Best First Search algorithm. Perform BFS on the given graph. (14)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-5', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-5">
+                <p>Placeholder: Best First Search content to be updated. Refer to diagrams below for the search process.</p>
+                <img src="b1.jpg" alt="Best First Search Graph" class="diagram-img">
+                <img src="b2.jpg" alt="Best First Search Expansion" class="diagram-img">
+            </div>
+        </div>
+
+        <!-- TOPIC 6 -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 6: Heuristic Functions</span>
+                    <ul class="exam-questions-list">
+                        <li>Describe the difference between admissible heuristic and consistent heuristic with an example. (3)</li>
+                        <li>Define heuristic function? Give an example. (3)</li>
+                        <li>Discuss the heuristic function. (7)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-6', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-6">
+                <h4>Heuristics function</h4>
+                <ul>
+                    <li>Heuristic is a function used in Informed Search to find the most promising path.</li>
+                    <li>It estimates how close an agent is from the goal, represented by h(n).</li>
+                    <li>Admissibility Condition: h(n) &le; h*(n). The heuristic should never overestimate the actual cost.</li>
+                </ul>
+                <h4>Example: Map Navigation</h4>
+                <p><strong>Heuristic (h(n)):</strong> The straight-line distance (as the crow flies) from the current city to the destination. This is always admissible because a straight line is the shortest possible distance.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function toggleAnswer(elementId, btn) {
+        const el = document.getElementById(elementId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+            btn.innerText = 'Show Answer';
+        } else {
+            el.style.display = 'block';
+            btn.innerText = 'Hide Answer';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTU CST 401 AI - Module 4 Answers</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .view-btn {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 2px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .view-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        .view-btn:hover:not(.active) {
+            background-color: #eff6ff;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { background-color: #f1f5f9; }
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .syllabus-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 30px;
+        }
+        .syllabus-title { font-weight: bold; color: var(--primary); font-size: 1.1em; margin-bottom: 5px; }
+        
+        /* Answer Cards */
+        .questions-container { display: flex; flex-direction: column; gap: 20px; }
+        .answer-card {
+            background-color: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+        }
+        .answer-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .topic-info { flex: 1; }
+        .answer-topic { font-size: 1.3em; font-weight: bold; color: var(--primary); display: block; margin-bottom: 10px;}
+        
+        /* Exam Questions List */
+        .exam-questions-list {
+            background-color: #f8fafc;
+            border-left: 3px solid #94a3b8;
+            padding: 15px 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95em;
+            color: #475569;
+            margin-bottom: 0;
+            margin-top: 0;
+            list-style-type: none;
+        }
+        .exam-questions-list li { margin-bottom: 8px; padding-left: 10px; text-indent: -10px;}
+        .exam-questions-list li::before { content: "• "; color: var(--primary); font-weight: bold; }
+
+        .toggle-btn {
+            background-color: var(--primary); color: white; border: none; padding: 8px 16px;
+            border-radius: 4px; cursor: pointer; font-weight: bold; margin-left: 20px;
+            white-space: nowrap; align-self: flex-start;
+        }
+        .toggle-btn:hover { background-color: var(--primary-hover); }
+        
+        .answer-body {
+            margin-top: 15px; padding-top: 20px; border-top: 2px dashed var(--border);
+            display: none; color: #1e293b;
+        }
+        
+        /* Typography for Answers */
+        .answer-body h4 { color: #0f172a; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        .answer-body p { margin-bottom: 10px; }
+        .answer-body ul, .answer-body ol { margin-bottom: 15px; padding-left: 25px; }
+        .answer-body li { margin-bottom: 8px; }
+        .answer-body table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .answer-body th, .answer-body td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+        .answer-body th { background-color: #f1f5f9; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CST 401 AI - Study Portal</h1>
+    
+    <div class="view-toggle">
+        <a href="index.html?mod=4" class="view-btn">Questions</a>
+        <a href="#" class="view-btn active">Answers</a>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs" id="tabs-container">
+        <a href="answer_module1.html" class="tab-btn">Module 1</a>
+        <a href="answer_module2.html" class="tab-btn">Module 2</a>
+        <a href="answer_module3.html" class="tab-btn">Module 3</a>
+        <a href="answer_module4.html" class="tab-btn active">Module 4</a>
+        <a href="answer_module5.html" class="tab-btn">Module 5</a>
+    </div>
+
+    <div class="syllabus-box" id="syllabus-box">
+        <div class="syllabus-title">Module 4 Breakdown</div>
+        <div>Logical Agents – Knowledge based agents, Logic, Propositional Logic, Propositional Theorem proving, Agents based on Propositional Logic. First Order Predicate Logic – Syntax and Semantics of First Order Logic, Using First Order Logic, Knowledge representation in First Order Logic. Inference in First Order Logic – Propositional Vs First Order inference, Unification and Lifting, Forward chaining, Backward chaining, Resolution.</div>
+    </div>
+
+    <div class="questions-container">
+        
+        <!-- TOPIC 1: Knowledge Based Agent -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 1: Knowledge Based Agent</span>
+                    <ul class="exam-questions-list">
+                        <li>What is a knowledge-based agent? How does it work? (3)</li>
+                        <li>What is a knowledge-based agent? How does it work? Write an algorithm for Knowledge based agent. (7)</li>
+                        <li>What is a knowledge-based agent? Write an algorithm. (7)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-1', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-1">
+                <p>A <strong>Knowledge-Based Agent (KBA)</strong> is an intelligent agent that uses a central repository of information, known as a Knowledge Base (KB), to make decisions and perform actions. Unlike simple reflex agents, it "knows" about its world and can reason to reach a goal.</p>
+                
+                <h4>How it works</h4>
+                <p>A Knowledge-Based Agent operates through a continuous cycle of three main steps:</p>
+                <ul>
+                    <li><strong>TELL:</strong> The agent "tells" the Knowledge Base what it perceives from its environment through sensors, updating its internal model of the world.</li>
+                    <li><strong>ASK:</strong> The agent "asks" the Knowledge Base what action it should perform based on its current knowledge and its goals.</li>
+                    <li><strong>EXECUTE:</strong> Once the KB provides a logical conclusion or action, the agent performs that action via its actuators.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOPIC 2: Conjunctive Normal Form -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 2: Conjunctive Normal Form (CNF)</span>
+                    <ul class="exam-questions-list">
+                        <li>What do you mean by Conjunctive Normal Form? (3)</li>
+                        <li>Steps for converting propositional logic to CNF. Convert (P -> Q) -> ((Q -> R) -> (P -> R)). (6)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-2', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-2">
+                <h4>1. Definition:</h4>
+                <p>CNF is a way of organizing logical formulas where the statement is a conjunction of one or more clauses. In simpler terms, it is an "AND of ORs."</p>
+                
+                <h4>2. Structure:</h4>
+                <ul>
+                    <li><strong>Literals:</strong> A variable (e.g., P) or its negation (e.g., &not;P).</li>
+                    <li><strong>Clauses:</strong> A series of literals connected only by OR (&or;) operators.</li>
+                    <li><strong>The Formula:</strong> Multiple clauses connected together only by AND (&and;) operators.</li>
+                </ul>
+                
+                <h4>3. Format Example:</h4>
+                <p><strong>(A &or; B) &and; (&not;B &or; C &or; D) &and; (E)</strong></p>
+                <p><em>(Each set of parentheses is a clause, and they are all joined by AND.)</em></p>
+                
+                <h4>4. Significance:</h4>
+                <p>CNF is the standard format required for Resolution, a powerful inference rule used by Knowledge-Based Agents to perform logical reasoning and prove theorems.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 3: Skolemization -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 3: Skolemization</span>
+                    <ul class="exam-questions-list">
+                        <li>Explain the term Skolemization. (3)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-3', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-3">
+                <p><strong>Skolemization</strong> is a process used in First-Order Logic to remove existential quantifiers (&exists;) from a logical formula while preserving its satisfiability. It is a crucial step in converting logical sentences into Conjunctive Normal Form (CNF) for automated reasoning.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: Forward and Backward Chaining -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 4: Difference Between Forward and Backward Chaining</span>
+                    <ul class="exam-questions-list">
+                        <li>Differentiate Forward Chaining and Backward Chaining with their algorithms. (9)</li>
+                        <li>List six differences between Forward and Backward chaining. (6)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-4', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-4">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Forward Chaining</th>
+                            <th>Backward Chaining</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Direction</strong></td>
+                            <td>Data-driven: It starts from known facts and moves forward to find a conclusion.</td>
+                            <td>Goal-driven: It starts from a specific goal (hypothesis) and works backward to find supporting facts.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Process</strong></td>
+                            <td>It follows the "If-Then" rule: If A is true, then B is true.</td>
+                            <td>It asks: "What must be true" to achieve goal G?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Strategy</strong></td>
+                            <td>It is an antecedent-driven strategy (looking at the "if" part).</td>
+                            <td>It is a consequent-driven strategy (looking at the "then" part).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Search</strong></td>
+                            <td>Uses Breadth-First Search (BFS) to explore all possible paths from facts.</td>
+                            <td>Uses Depth-First Search (DFS) to find a specific path to the goal.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Suitability</strong></td>
+                            <td>Best for systems where there are many facts but few possible goals (e.g., control systems).</td>
+                            <td>Best for systems where there are many facts but only a few specific hypotheses to test.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. Examples</strong></td>
+                            <td>Used in Expert Systems for monitoring, planning, and real-time scheduling.</td>
+                            <td>Used in Diagnostic Systems (e.g., medical diagnosis or debugging code).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function toggleAnswer(elementId, btn) {
+        const el = document.getElementById(elementId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+            btn.innerText = 'Show Answer';
+        } else {
+            el.style.display = 'block';
+            btn.innerText = 'Hide Answer';
+        }
+    }
+</script>
+</body>
+</html>
