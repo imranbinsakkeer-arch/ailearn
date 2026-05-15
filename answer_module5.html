@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KTU CST 401 AI Questions</title>
+    <title>KTU CST 401 AI - Module 5 Answers</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -13,7 +13,6 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border: #e2e8f0;
-            --dark-bg: #1e293b;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -73,6 +72,7 @@
             cursor: pointer;
             font-weight: 600;
             color: var(--text-muted);
+            text-decoration: none;
             transition: all 0.2s ease;
         }
         .tab-btn:hover { background-color: #f1f5f9; }
@@ -81,22 +81,6 @@
             color: white;
             border-color: var(--primary);
         }
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .group-btn {
-            background-color: #10b981;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
         .syllabus-box {
             background-color: #eff6ff;
             border-left: 4px solid var(--primary);
@@ -104,28 +88,54 @@
             border-radius: 0 6px 6px 0;
             margin-bottom: 30px;
         }
-        .syllabus-title { font-weight: bold; color: var(--primary); font-size: 1.1em; }
-        .questions-container { display: flex; flex-direction: column; gap: 15px; }
-        .topic-header {
-            margin-top: 25px; border-bottom: 2px solid var(--border);
-            color: var(--primary); text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px;
-        }
-        .question-card {
+        .syllabus-title { font-weight: bold; color: var(--primary); font-size: 1.1em; margin-bottom: 5px; }
+        
+        /* Answer Cards */
+        .questions-container { display: flex; flex-direction: column; gap: 20px; }
+        .answer-card {
             background-color: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 8px; padding: 15px 20px; cursor: pointer; transition: all 0.2s;
+            border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
         }
-        .question-card.highlighted {
-            background-color: var(--dark-bg); color: #ffffff; border-color: var(--dark-bg);
+        .answer-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .topic-info { flex: 1; }
+        .answer-topic { font-size: 1.3em; font-weight: bold; color: var(--primary); display: block; margin-bottom: 10px;}
+        
+        /* Exam Questions List */
+        .exam-questions-list {
+            background-color: #f8fafc;
+            border-left: 3px solid #94a3b8;
+            padding: 15px 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95em;
+            color: #475569;
+            margin-bottom: 0;
+            margin-top: 0;
+            list-style-type: none;
         }
-        .question-card.highlighted .q-text, .question-card.highlighted .q-topic, .question-card.highlighted .q-number {
-            color: #ffffff;
+        .exam-questions-list li { margin-bottom: 8px; padding-left: 10px; text-indent: -10px;}
+        .exam-questions-list li::before { content: "• "; color: var(--primary); font-weight: bold; }
+
+        .toggle-btn {
+            background-color: var(--primary); color: white; border: none; padding: 8px 16px;
+            border-radius: 4px; cursor: pointer; font-weight: bold; margin-left: 20px;
+            white-space: nowrap; align-self: flex-start;
         }
-        .question-card.highlighted .q-part { background-color: #475569; color: #e2e8f0; }
-        .q-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.8em; }
-        .q-part { font-weight: bold; background-color: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: #475569; }
-        .q-topic { color: var(--primary); font-weight: 600; }
-        .q-text { font-size: 1.05em; white-space: pre-wrap; color: #334155; }
-        .q-number { font-weight: bold; color: var(--primary); margin-right: 5px; }
+        .toggle-btn:hover { background-color: var(--primary-hover); }
+        
+        .answer-body {
+            margin-top: 15px; padding-top: 20px; border-top: 2px dashed var(--border);
+            display: none; color: #1e293b;
+        }
+        
+        /* Typography for Answers */
+        .answer-body h4 { color: #0f172a; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        .answer-body p { margin-bottom: 10px; }
+        .answer-body ul, .answer-body ol { margin-bottom: 15px; padding-left: 25px; }
+        .answer-body li { margin-bottom: 8px; }
+        .answer-body table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .answer-body th, .answer-body td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+        .answer-body th { background-color: #f1f5f9; color: var(--primary); }
+        .diagram-img { max-width: 100%; display: block; margin: 20px auto; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -134,122 +144,272 @@
     <h1>CST 401 AI - Study Portal</h1>
     
     <div class="view-toggle">
-        <a href="#" class="view-btn active">Questions</a>
-        <a href="answer_module1.html" id="answers-link" class="view-btn">Answers</a>
+        <a href="index.html?mod=5" class="view-btn">Questions</a>
+        <a href="#" class="view-btn active">Answers</a>
     </div>
 
-    <div class="tabs" id="tabs-container"></div>
-
-    <div class="controls" id="questions-controls">
-        <h2 id="current-module-title">Module 1</h2>
-        <button class="group-btn" id="group-btn" onclick="toggleGrouping()">Group by Syllabus Topic: OFF</button>
+    <!-- Navigation Tabs -->
+    <div class="tabs" id="tabs-container">
+        <a href="answer_module1.html" class="tab-btn">Module 1</a>
+        <a href="answer_module2.html" class="tab-btn">Module 2</a>
+        <a href="answer_module3.html" class="tab-btn">Module 3</a>
+        <a href="answer_module4.html" class="tab-btn">Module 4</a>
+        <a href="answer_module5.html" class="tab-btn active">Module 5</a>
     </div>
 
     <div class="syllabus-box" id="syllabus-box">
-        <div class="syllabus-title">Syllabus Overview</div>
-        <div id="syllabus-text"></div>
+        <div class="syllabus-title">Module 5 Breakdown</div>
+        <div>Learning from Examples – Forms of Learning, Supervised Learning, Learning Decision Trees, Evaluating and choosing the best hypothesis, Regression and classification with Linear models.</div>
     </div>
 
-    <div class="questions-container" id="content-container"></div>
+    <div class="questions-container">
+        
+        <!-- TOPIC 1: Various Forms of Learning -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 1: Various Forms of Learning</span>
+                    <ul class="exam-questions-list">
+                        <li>Describe the various forms of learning. (3)</li>
+                        <li>Explain about Supervised Learning. (3)</li>
+                        <li>Give the significance of Learning from examples. Explain the various types of Learning. (7)</li>
+                        <li>List and explain the different types of learning. (6)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-1', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-1">
+                <h4>1. Supervised Learning</h4>
+                <p>Supervised learning is a method where the model is trained using labeled data (input-output pairs). It acts like a student learning under the guidance of a teacher who provides the "answer key."</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> The algorithm identifies patterns between the input features and the known labels. After training, the model is tested with unseen data to predict the output.</li>
+                    <li><strong>Mathematical Goal:</strong> To learn a mapping function y = f(x) such that for a new x, y can be predicted accurately.</li>
+                    <li><strong>Sub-categories:</strong>
+                        <ul>
+                            <li><strong>Classification:</strong> Predicting discrete categories (e.g., Email: Spam or Not Spam).</li>
+                            <li><strong>Regression:</strong> Predicting continuous numerical values (e.g., Predicting house prices based on square footage).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example:</strong> Handwriting recognition or voice-to-text conversion.</li>
+                </ul>
+
+                <h4>2. Unsupervised Learning</h4>
+                <p>Unsupervised learning occurs when the machine is given unlabeled data and must find hidden structures or patterns within it without any external guidance.</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> Since there is no "teacher" or label, the machine looks for similarities, differences, and patterns. It is used for feature extraction and data compression.</li>
+                    <li><strong>Goal:</strong> To model the underlying structure or distribution in the data to learn more about it.</li>
+                    <li><strong>Sub-categories:</strong>
+                        <ul>
+                            <li><strong>Clustering:</strong> Grouping similar data points together (e.g., segmenting customers by purchasing habits).</li>
+                            <li><strong>Association:</strong> Discovering rules that describe your data (e.g., "People who buy bread also tend to buy butter").</li>
+                        </ul>
+                    </li>
+                    <li><strong>Example:</strong> Recommendation engines (like Netflix suggesting movies based on similar viewing patterns).</li>
+                </ul>
+
+                <h4>3. Reinforcement Learning (RL)</h4>
+                <p>Reinforcement Learning is a feedback-based method where an "Agent" learns to behave in an "Environment" by performing actions and seeing the results.</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> It follows a Trial-and-Error approach. The agent receives a Reward for correct actions and a Penalty (negative reward) for incorrect ones. The agent's objective is to maximize the cumulative reward over time.</li>
+                    <li><strong>Key Components:</strong> Agent, Environment, State, Action, and Reward.</li>
+                    <li><strong>Example:</strong> AlphaGo (AI playing board games), self-driving cars navigating traffic, or a robotic arm learning to pick up objects without dropping them.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOPIC 2: Decision Tree Algorithm -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 2: Decision Tree Algorithm</span>
+                    <ul class="exam-questions-list">
+                        <li>Explain Decision Tree Learning Algorithm. (8)</li>
+                        <li>Explain Decision Tree Learning Algorithm with the help of an example. (7)</li>
+                        <li>Explain learning in Decision Tree with an example. (8)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-2', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-2">
+                <h4>Decision Tree Classification Algorithm</h4>
+                <ul>
+                    <li>Supervised learning technique can be used for both classification and regression problem.</li>
+                    <li>Tree-structured classifier where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.</li>
+                    <li>To build a tree we use CART algorithm.</li>
+                </ul>
+                
+                <h4>Steps to build a tree:</h4>
+                <ul>
+                    <li><strong>Step-1:</strong> Begin the tree with the root node, says S, which contains the complete dataset.</li>
+                    <li><strong>Step-2:</strong> Find the best attribute in the dataset using Attribute Selection Measure (ASM).</li>
+                    <li><strong>Step-3:</strong> Divide the S into subsets that contains possible values for the best attributes.</li>
+                    <li><strong>Step-4:</strong> Generate the decision tree node, which contains the best attribute.</li>
+                    <li><strong>Step-5:</strong> Recursively make new decision trees using the subsets of the dataset created in step -3. Continue this process until a stage is reached where you cannot further classify the nodes and called the final node as a leaf node.</li>
+                </ul>
+
+                <h4>Example:</h4>
+                <p>Suppose there is a candidate who has a job offer and wants to decide whether he should accept the offer or Not. So, to solve this problem, the decision tree starts with the root node (Salary attribute by ASM). The root node splits further into the next decision node (distance from the office) and one leaf node based on the corresponding labels. The next decision node further gets split into one decision node (Cab facility) and one leaf node. Finally, the decision node splits into two leaf nodes (Accepted offers and Declined offer). Consider the below diagram:</p>
+                <img src="image_df2bff.png" onerror="this.src='image2.png'" alt="Decision Tree Example" class="diagram-img">
+            </div>
+        </div>
+
+        <!-- TOPIC 3: Overfitting vs Underfitting & 4 Methods -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 3: Overfitting vs Underfitting and 4 Methods to Prevent Overfitting</span>
+                    <ul class="exam-questions-list">
+                        <li>What is overfitting and underfitting? How does it affect generalization? (3)</li>
+                        <li>Explain any 4 methods to prevent overfitting in Machine Learning. (8)</li>
+                        <li>Explain the different ways to avoid overfitting. (7)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-3', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-3">
+                <h4>1. Overfitting vs Underfitting</h4>
+                <p><strong>Overfitting</strong><br>
+                Overfitting occurs when a model learns the training data too well. It captures not only the underlying patterns but also the random "noise" and outliers.</p>
+                <ul>
+                    <li><strong>Performance:</strong> Extremely high accuracy on training data, but poor performance on new (test) data.</li>
+                    <li><strong>Analogy:</strong> A student who memorizes every specific practice question but fails the actual exam because they didn't understand the core concepts.</li>
+                </ul>
+
+                <p><strong>Underfitting</strong><br>
+                Underfitting occurs when a model is too simple to learn the underlying structure of the data.</p>
+                <ul>
+                    <li><strong>Performance:</strong> Poor performance on both the training data and the test data.</li>
+                    <li><strong>Analogy:</strong> A student who only skims the table of contents and fails the exam because they don't know enough detail to answer any questions.</li>
+                </ul>
+
+                <h4>2. Four Methods to Prevent Overfitting</h4>
+                <p>To ensure a model generalizes well and avoids overfitting, you can use the following techniques:</p>
+                
+                <p><strong>A. Cross-Validation</strong><br>
+                Instead of splitting data into just two parts (train and test), K-Fold Cross-Validation involves splitting the data into k subsets. The model is trained on k-1 subsets and validated on the remaining one. This process repeats k times, ensuring every data point is used for both training and validation.</p>
+                <ul>
+                    <li><strong>Benefit:</strong> It provides a more robust estimate of how the model will perform on unseen data.</li>
+                </ul>
+
+                <p><strong>B. Regularization (L1 and L2)</strong><br>
+                Regularization adds a "penalty" term to the model's loss function based on the size of the coefficients (weights).</p>
+                <ul>
+                    <li><strong>L1 (Lasso):</strong> Can shrink some coefficients to zero, effectively performing feature selection.</li>
+                    <li><strong>L2 (Ridge):</strong> Discourages large weights by squaring them in the penalty term.</li>
+                    <li><strong>Benefit:</strong> It prevents the model from becoming overly complex or relying too heavily on a single feature.</li>
+                </ul>
+
+                <p><strong>C. Pruning (Specific to Decision Trees)</strong><br>
+                Pruning is the process of removing branches from a decision tree that provide little power to classify instances.</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> You can prune "pre-emptively" (stop growing the tree early) or "post-pruning" (remove nodes after the tree is fully grown).</li>
+                    <li><strong>Benefit:</strong> It simplifies the model, making it less likely to memorize noise in the training set.</li>
+                </ul>
+
+                <p><strong>D. Increasing Training Data</strong><br>
+                One of the simplest ways to reduce overfitting is to provide the model with more examples.</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> With more data, the "noise" eventually averages out, and the model is forced to focus on the dominant, real patterns that persist across the larger dataset.</li>
+                    <li><strong>Benefit:</strong> It helps the model distinguish between a rare outlier and a general rule.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: Differences -->
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 4: Core Differences (Regression Types & Output)</span>
+                    <ul class="exam-questions-list">
+                        <li>Differentiate univariate and multivariate linear regression. (3)</li>
+                        <li>List out the difference between Classification and Regression. (3)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-4', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-4">
+                <h4>Univariate vs Multivariate Linear Regression</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Univariate Linear Regression</th>
+                            <th>Multivariate Linear Regression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Definition</strong></td>
+                            <td>Uses a single independent variable to predict the outcome.</td>
+                            <td>Uses two or more independent variables to predict the outcome.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Equation</strong></td>
+                            <td>y = w_0 + w_1x</td>
+                            <td>y = w_0 + w_1x_1 + w_2x_2 + ... + w_nx_n</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relationship</strong></td>
+                            <td>Investigates the relationship between two variables only.</td>
+                            <td>Investigates the relationship between multiple variables and one output.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Example</strong></td>
+                            <td>Predicting Weight based on Height.</td>
+                            <td>Predicting House Price based on Area, Bedrooms, and Age.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Regression vs Classification</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Regression</th>
+                            <th>Classification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Output Type</strong></td>
+                            <td>Continuous (Numbers)</td>
+                            <td>Discrete (Categories/Labels)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Objective</strong></td>
+                            <td>Predict a quantity (How much?)</td>
+                            <td>Predict a class (Which one?)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Example</strong></td>
+                            <td>Predicting the temperature</td>
+                            <td>Predicting if it will rain (Yes/No)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Algorithm</strong></td>
+                            <td>Linear Regression</td>
+                            <td>Logistic Regression, Decision Trees</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<script src="data.js"></script>
 <script>
-    let currentModule = 1;
-    let isGrouped = false;
-
-    // Parse URL parameter to maintain module state across pages
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.has('mod')) {
-        currentModule = parseInt(urlParams.get('mod'));
-    }
-
-    function init() {
-        const tabsContainer = document.getElementById('tabs-container');
-        const presentModules = [...new Set(questions.map(q => q.mod))].sort();
-        
-        presentModules.forEach(modNum => {
-            const btn = document.createElement('button');
-            btn.className = `tab-btn ${modNum === currentModule ? 'active' : ''}`;
-            btn.innerText = `Module ${modNum}`;
-            btn.onclick = () => {
-                // Update URL parameter without reloading
-                const url = new URL(window.location);
-                url.searchParams.set('mod', modNum);
-                window.history.pushState({}, '', url);
-                switchModule(modNum, btn);
-            };
-            tabsContainer.appendChild(btn);
-        });
-        
-        updateLinks();
-        renderContent();
-    }
-    
-    function updateLinks() {
-        // Dynamically point to answer_module1.html, answer_module2.html, etc.
-        const answersLink = document.getElementById('answers-link');
-        answersLink.href = `answer_module${currentModule}.html`;
-    }
-
-    function switchModule(modNum, btnElement) {
-        currentModule = modNum;
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        btnElement.classList.add('active');
-        document.getElementById('current-module-title').innerText = `Module ${currentModule}`;
-        updateLinks();
-        renderContent();
-    }
-
-    function toggleGrouping() {
-        isGrouped = !isGrouped;
-        const btn = document.getElementById('group-btn');
-        btn.innerText = isGrouped ? "Group by Syllabus Topic: ON" : "Group by Syllabus Topic: OFF";
-        btn.style.backgroundColor = isGrouped ? "#2563eb" : "#10b981";
-        renderContent();
-    }
-
-    function renderContent() {
-        const container = document.getElementById('content-container');
-        container.innerHTML = '';
-        document.getElementById('syllabus-text').innerText = syllabusData[currentModule] ? syllabusData[currentModule].text : "N/A";
-        
-        let modQuestions = questions.filter(q => q.mod === currentModule);
-
-        if (isGrouped && syllabusData[currentModule]) {
-            const topics = syllabusData[currentModule].topics;
-            topics.forEach(topic => {
-                const topicQuestions = modQuestions.filter(q => q.topic === topic);
-                if (topicQuestions.length > 0) {
-                    const header = document.createElement('h3');
-                    header.className = 'topic-header';
-                    header.innerText = topic;
-                    container.appendChild(header);
-                    topicQuestions.forEach(q => renderQuestionCard(q, container));
-                }
-            });
+    function toggleAnswer(elementId, btn) {
+        const el = document.getElementById(elementId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+            btn.innerText = 'Show Answer';
         } else {
-            modQuestions.forEach(q => renderQuestionCard(q, container));
+            el.style.display = 'block';
+            btn.innerText = 'Hide Answer';
         }
     }
-
-    function renderQuestionCard(q, container) {
-        const card = document.createElement('div');
-        card.className = 'question-card';
-        card.innerHTML = `
-            <div class="q-header">
-                <span class="q-part">${q.part}</span>
-                <span class="q-topic">${q.topic}</span>
-            </div>
-            <div class="q-text"><span class="q-number">Q${q.number}.</span> ${q.text}</div>
-        `;
-        card.addEventListener('click', function() {
-            this.classList.toggle('highlighted');
-        });
-        container.appendChild(card);
-    }
-
-    window.onload = init;
 </script>
 </body>
 </html>
