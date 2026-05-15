@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTU CST 401 AI - Module 1 Answers</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .view-btn {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 2px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .view-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        .view-btn:hover:not(.active) {
+            background-color: #eff6ff;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { background-color: #f1f5f9; }
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .syllabus-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 30px;
+        }
+        .syllabus-title { font-weight: bold; color: var(--primary); font-size: 1.1em; margin-bottom: 5px; }
+        
+        /* Answer Cards */
+        .questions-container { display: flex; flex-direction: column; gap: 20px; }
+        .answer-card {
+            background-color: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+        }
+        .answer-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .topic-info { flex: 1; }
+        .answer-topic { font-size: 1.3em; font-weight: bold; color: var(--primary); display: block; margin-bottom: 10px;}
+        
+        /* Exam Questions List */
+        .exam-questions-list {
+            background-color: #f8fafc;
+            border-left: 3px solid #94a3b8;
+            padding: 15px 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95em;
+            color: #475569;
+            margin-bottom: 0;
+            margin-top: 0;
+            list-style-type: none;
+        }
+        .exam-questions-list li { margin-bottom: 8px; padding-left: 10px; text-indent: -10px;}
+        .exam-questions-list li::before { content: "• "; color: var(--primary); font-weight: bold; }
+
+        .toggle-btn {
+            background-color: var(--primary); color: white; border: none; padding: 8px 16px;
+            border-radius: 4px; cursor: pointer; font-weight: bold; margin-left: 20px;
+            white-space: nowrap; align-self: flex-start;
+        }
+        .toggle-btn:hover { background-color: var(--primary-hover); }
+        
+        .answer-body {
+            margin-top: 15px; padding-top: 20px; border-top: 2px dashed var(--border);
+            display: none; color: #1e293b;
+        }
+        
+        /* Typography for Answers */
+        .answer-body h4 { color: #0f172a; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        .answer-body p { margin-bottom: 10px; }
+        .answer-body ul, .answer-body ol { margin-bottom: 15px; padding-left: 25px; }
+        .answer-body li { margin-bottom: 8px; }
+        .diagram-img { max-width: 100%; display: block; margin: 20px auto; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        pre.ascii-art { background-color: #f1f5f9; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: monospace; font-size: 0.85em; border: 1px solid #cbd5e1; color: #0f172a; line-height: 1.2;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CST 401 AI - Study Portal</h1>
+    
+    <div class="view-toggle">
+        <a href="index.html?mod=1" class="view-btn">Questions</a>
+        <a href="#" class="view-btn active">Answers</a>
+    </div>
+
+    <div class="tabs" id="tabs-container">
+        <a href="answer_module1.html" class="tab-btn active">Module 1</a>
+        <a href="answer_module2.html" class="tab-btn">Module 2</a>
+        <a href="answer_module3.html" class="tab-btn">Module 3</a>
+        <a href="answer_module4.html" class="tab-btn">Module 4</a>
+        <a href="answer_module5.html" class="tab-btn">Module 5</a>
+    </div>
+
+    <div class="syllabus-box" id="syllabus-box">
+        <div class="syllabus-title">Module 1 Breakdown</div>
+        <div>Introduction – What is Artificial Intelligence(AI)? The Foundations of AI, History of AI, Applications of AI. Intelligent Agents – Agents and Environments, Good behavior: The concept of rationality, nature of Environments, Structure of Agents.</div>
+    </div>
+
+    <div class="questions-container">
+        
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 1: Define Artificial Intelligence</span>
+                    <ul class="exam-questions-list">
+                        <li>Define artificial intelligence. (3)</li>
+                        <li>Define artificial intelligence. [Duplicate] (3)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-1', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-1">
+                <p>Artificial intelligence is a wide-ranging branch of computer science concerned with building smart machines capable of performing tasks that typically require human intelligence.</p>
+                <p>Artificial intelligence allows machines to replicate the capabilities of the human mind. AI can:</p>
+                <ul>
+                    <li>Think humanly</li>
+                    <li>Think rationally</li>
+                    <li>Act humanly</li>
+                    <li>Act rationally</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 2: Turing Test & Significance</span>
+                    <ul class="exam-questions-list">
+                        <li>What is Turing Test? Give its significance in the field of Artificial Intelligence. (3)</li>
+                        <li>What is Turing Test? Give its significance. [Duplicate] (3)</li>
+                        <li>Explain the significance of Turing test in the field of Artificial Intelligence. (3)</li>
+                        <li>Explain the significance of Turing test. [Duplicate] (3)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-2', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-2">
+                <p>The Turing Test was proposed by Alan Turing (1950). It was designed to provide a satisfactory operational definition of intelligence.</p>
+                <ul>
+                    <li>A Judge communicates with a human and machine over text through a channel.</li>
+                    <li>Both human and a machine try to act like a human.</li>
+                    <li>The Judge tries to tell which is which.</li>
+                </ul>
+                <p>A computer passes the test if a human interrogator, after posing some written questions, cannot tell whether the written responses come from a person or from a computer.</p>
+                
+                <h4>Capabilities needed for a computer to pass:</h4>
+                <ul>
+                    <li><strong>Natural Language Processing:</strong> To enable it to communicate successfully in English.</li>
+                    <li><strong>Knowledge Representation:</strong> To store what it knows or hears.</li>
+                    <li><strong>Automated Reasoning:</strong> To use the stored information to answer questions and to draw new conclusions.</li>
+                    <li><strong>Machine Learning:</strong> To adapt to new circumstances and to detect and extrapolate patterns.</li>
+                </ul>
+                <p><em>Total Turing test contain video signal to test subjects perceptual abilities.</em></p>
+
+                <h4>Significance in Artificial Intelligence</h4>
+                <p>The Turing Test remains a foundational concept in AI for several reasons:</p>
+                <ol>
+                    <li><strong>Operational Definition of Intelligence:</strong> It provided the first functional, rather than biological, definition of intelligence. It shifted the focus from how a system works to how it behaves.</li>
+                    <li><strong>Goal Setting:</strong> It served as a North Star for early AI research, emphasizing that human-level communication is a hallmark of high-level intelligence.</li>
+                    <li><strong>Philosophy of Mind:</strong> It sparked intense debate (e.g., Searle’s Chinese Room Argument) about whether "simulating" intelligence is the same as "having" actual consciousness or understanding.</li>
+                    <li><strong>Focus on Behavior:</strong> It avoids the "black box" problem of the human brain by focusing entirely on output, which is the basis for many modern AI evaluations today.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 3: Applications of AI & History</span>
+                    <ul class="exam-questions-list">
+                        <li>Discuss any three applications of Artificial Intelligence. (3)</li>
+                        <li>Explain 6 applications of AI in detail. (6)</li>
+                        <li>Give any four applications of AI. (4)</li>
+                        <li>Discuss the milestones in the history of Artificial Intelligence. (6)</li>
+                        <li>Discuss the milestones in the history of Artificial Intelligence. [Duplicate] (6)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-3', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-3">
+                <ol>
+                    <li><strong>Healthcare and Medical Diagnosis:</strong> AI is used to analyze medical images (X-rays, MRIs) with high precision to detect diseases like cancer or pneumonia earlier than humans. <em>Example: IBM Watson for Oncology or AI-driven robotic surgeries.</em></li>
+                    <li><strong>Natural Language Processing (NLP):</strong> This allows machines to understand, interpret, and generate human language. It powers modern communication tools. <em>Example: Virtual assistants like Siri/Alexa, automated translation services, and chatbots.</em></li>
+                    <li><strong>Autonomous Vehicles (Transportation):</strong> AI combines Computer Vision, Deep Learning, and Sensor Fusion to allow vehicles to navigate without human intervention. <em>Example: Tesla’s Autopilot and Waymo.</em></li>
+                    <li><strong>Finance and Fraud Detection:</strong> Banks use AI to monitor transaction patterns in real-time. If a transaction deviates significantly from a user’s typical behavior, the AI flags it as potential fraud. <em>Example: Algorithmic trading and credit scoring systems.</em></li>
+                    <li><strong>E-commerce and Recommendation Systems:</strong> AI analyzes user behavior, search history, and preferences to provide highly personalized suggestions, which significantly increases sales. <em>Example: Amazon’s "Recommended for you" or Netflix.</em></li>
+                    <li><strong>Gaming and Simulations:</strong> AI is used to create Non-Player Characters (NPCs) that act intelligently and respond to a player’s actions, making the game more immersive. <em>Example: AlphaGo and dynamic difficulty adjustment.</em></li>
+                    <li><strong>Agriculture and Smart Farming:</strong> AI helps in "Precision Farming" by analyzing soil health, weather conditions, and crop images to provide recommendations on water and fertilizer usage. <em>Example: AI-powered drones that spray pesticides only on affected crops.</em></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 4: The 4 Concepts of AI Classification</span>
+                    <ul class="exam-questions-list">
+                        <li>Describe in detail the four categories under which AI is classified with. (3)</li>
+                        <li>How do we analyze that Artificial Intelligence is acting like a human? Elaborate the four concepts used in AI. (10)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-4', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-4">
+                <h4>1. Thinking Humanly (The Cognitive Modeling Approach)</h4>
+                <p>This concept focuses on the internal "thought process" of the machine. To determine if a machine thinks like a human, we must first understand how humans think.</p>
+                <ul>
+                    <li><strong>Analysis:</strong> We use cognitive science to create models of the human mind. If the program’s input-output behavior and timing match human behavior, it is evidence that the machine might be using similar reasoning steps.</li>
+                    <li><strong>Goal:</strong> To simulate the internal "processing" of the human brain (e.g., how we solve a puzzle or recognize a face).</li>
+                </ul>
+
+                <h4>2. Acting Humanly (The Turing Test Approach)</h4>
+                <p>This is the most famous way to analyze AI. It doesn't care how the machine thinks inside; it only cares about the final result.</p>
+                <ul>
+                    <li><strong>Analysis:</strong> This is measured using the Turing Test. If a human interrogator cannot distinguish between a machine's responses and a human's responses, the machine is "acting humanly."</li>
+                    <li><strong>Core Skills:</strong> To act humanly, the AI needs Natural Language Processing, Knowledge Representation, and Automated Reasoning.</li>
+                </ul>
+
+                <h4>3. Thinking Rationally (The "Laws of Thought" Approach)</h4>
+                <p>This approach is based on Logic. It ignores the "messy" way humans often think (which can be emotional or irrational) and focuses on the "correct" way to think.</p>
+                <ul>
+                    <li><strong>Analysis:</strong> This uses Syllogisms (e.g., "All men are mortal; Socrates is a man; therefore, Socrates is mortal"). If the AI follows strict logical patterns to reach a conclusion, it is thinking rationally.</li>
+                    <li><strong>Obstacle:</strong> It is difficult to take informal knowledge and state it in formal logical terms, and even then, solving the logic can be computationally "expensive."</li>
+                </ul>
+
+                <h4>4. Acting Rationally (The Rational Agent Approach)</h4>
+                <p>Modern AI focuses mostly on this. A Rational Agent is something that acts to achieve the best outcome (or the best expected outcome when there is uncertainty).</p>
+                <ul>
+                    <li><strong>Analysis:</strong> We analyze if the AI is making the "right" decisions based on its environment and its goal. Acting rationally is more general than acting humanly because it doesn't require a human-like personality—just a perfect solution.</li>
+                    <li><strong>Example:</strong> A self-driving car doesn't need to "talk" like a human, but it must "act" rationally by stopping at a red light to achieve its goal of safety.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 5: Agents, Environments & PEAS</span>
+                    <ul class="exam-questions-list">
+                        <li>What is PEAS? Explain the PEAS description of an automated taxi driver. (3)</li>
+                        <li>What is PEAS? Give an example. [Duplicate] (3)</li>
+                        <li>Define PEAS representation. Give the PEAS representation of a self-driving car. (3)</li>
+                        <li>For the following activities, give a PEAS description of the task environment: a) Interactive English tutor b) Part picking robot. (3)</li>
+                        <li>Explain the task environment PEAS for the following agents: a) Robots play soccer b) Netflix recommendation system c) Medical diagnosis expert system. (6)</li>
+                        <li>Define PEAS in AI. For the following activities, give a PEAS description: a) Medical Diagnosis system b) Bidding on an item at an auction. (7)</li>
+                        <li>Explain the components of a well-defined AI problem with an example. (6)</li>
+                        <li>What are the components of a well defined AI problem? [Duplicate] (3)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-5', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-5">
+                <h4>AGENTS</h4>
+                <p>An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators</p>
+                <ul>
+                    <li>Operates in an environment</li>
+                    <li>Perceive its environment through sensors</li>
+                    <li>Acts upon its environment through actuators/ effectors</li>
+                    <li>Has Goals</li>
+                </ul>
+
+                <img src="image_0a4459.png" onerror="this.src='image.png'" alt="Agent and Environment" class="diagram-img">
+
+                <h4>The PEAS Framework</h4>
+                <p>In Artificial Intelligence, particularly in the study of Rational Agents, the PEAS representation is a framework used to define the task environment of an agent. When you are designing an AI, PEAS helps you specify exactly what the agent is supposed to do. The Four Components of PEAS:</p>
+                <ul>
+                    <li><strong>Performance Measure (P):</strong> The criteria that determine how successful the agent is. It measures the "quality" of the agent's behavior. Example: For a taxi driver, this would be safety, speed, and passenger comfort.</li>
+                    <li><strong>Environment (E):</strong> The external world or surroundings in which the agent operates. Example: For a taxi driver, this includes roads, other traffic, pedestrians, and weather conditions.</li>
+                    <li><strong>Actuators (A):</strong> The "body parts" or tools the agent uses to perform actions and change the state of the environment. Example: For a taxi driver, these are the steering wheel, accelerator, brake, and signal lights.</li>
+                    <li><strong>Sensors (S):</strong> The devices or inputs that allow the agent to perceive information from the environment. Example: For a taxi driver, these are cameras, GPS, speedometer, and engine sensors.</li>
+                </ul>
+
+                <h4>PEAS Examples</h4>
+                <ol>
+                    <li><strong>Automated Taxi Driver:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Safety, reach destination, maximize profits, obey traffic laws, passenger comfort.</li>
+                            <li><em>Environment:</em> Roads, other traffic, pedestrians, weather, customers.</li>
+                            <li><em>Actuators:</em> Steering wheel, accelerator, brake, signal lights, horn, display screen.</li>
+                            <li><em>Sensors:</em> Cameras, LiDAR/RADAR, GPS, speedometer, engine sensors, microphone (for voice commands).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Medical Diagnosis System:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Patient health, minimize costs, accuracy of diagnosis, avoid legal issues.</li>
+                            <li><em>Environment:</em> Patient, hospital environment, medical staff, lab results.</li>
+                            <li><em>Actuators:</em> Display screen (diagnosis/test results), printing prescriptions, medical alerts.</li>
+                            <li><em>Sensors:</em> Keyboard (entry of symptoms), sensors for vitals (Heart rate, Temp), electronic health records (EHR).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Part-Picking Robot:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Percentage of parts in correct bins, speed (efficiency), safety (not breaking parts).</li>
+                            <li><em>Environment:</em> Conveyor belt, bins, different types of parts.</li>
+                            <li><em>Actuators:</em> Jointed arm, hand/gripper, motor.</li>
+                            <li><em>Sensors:</em> Camera (to identify parts), joint angle sensors, pressure sensors (in the gripper).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Interactive English Tutor:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Student's improvement in test scores, student engagement, speed of learning.</li>
+                            <li><em>Environment:</em> The student, educational database, internet.</li>
+                            <li><em>Actuators:</em> Display screen (exercises/feedback), speakers (pronunciation guide).</li>
+                            <li><em>Sensors:</em> Keyboard (student answers), microphone (student's speech), mouse clicks.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Robots Playing Soccer:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Winning the game, scoring goals, preventing goals, teamwork.</li>
+                            <li><em>Environment:</em> Soccer field, the ball, teammates, opponents.</li>
+                            <li><em>Actuators:</em> Motors for legs/wheels, kicking mechanism.</li>
+                            <li><em>Sensors:</em> Cameras (to track ball and players), touch sensors, accelerometers.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Netflix Recommendation System:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> User watch time, user satisfaction (ratings), click-through rate.</li>
+                            <li><em>Environment:</em> User database, library of movies/shows, internet connection.</li>
+                            <li><em>Actuators:</em> Webpage/App interface (displaying specific movie posters).</li>
+                            <li><em>Sensors:</em> User clicks, watch history, search queries, ratings provided by the user.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Bidding at an Auction:</strong>
+                        <ul>
+                            <li><em>Performance Measure:</em> Winning the item, minimizing price paid (not over-bidding).</li>
+                            <li><em>Environment:</em> Auction house (virtual or physical), other bidders, the auctioneer.</li>
+                            <li><em>Actuators:</em> Sending a "Bid" command, display screen.</li>
+                            <li><em>Sensors:</em> Current high bid price, time remaining on clock, information about the item.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 6: Good Behavior & The Concept of Rationality</span>
+                    <ul class="exam-questions-list">
+                        <li>What is a Rational agent? Explain. (3)</li>
+                        <li>Explain the terms Rationality, Omniscience and Autonomous. (3)</li>
+                        <li>Design a rational vacuum cleaner agent. Describe a rational agent function for the case in which each movement costs one point. (6)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-6', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-6">
+                <p>A <strong>Rational Agent</strong> is any entity that perceives its environment through sensors and acts upon that environment through actuators to achieve the best possible outcome.</p>
+                <p><strong>Rationality</strong> is the ability to do the "right thing." In AI, the "right thing" is defined as the action that causes the agent to be most successful based on its Performance Measure.</p>
+                <p>An <strong>Omniscient agent</strong> is one that knows the actual outcome of its actions and can act accordingly. In simpler terms, it can see the future and knows everything.</p>
+                <p>An agent is <strong>Autonomous</strong> to the extent that its behavior is determined by its own experience (its own ability to learn and adapt) rather than by the prior knowledge provided by its designer.</p>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 7: Nature of Environments</span>
+                    <ul class="exam-questions-list">
+                        <li>Distinguish between episodic and sequential environment. (3)</li>
+                        <li>Explain the various task environment types with examples. (8)</li>
+                        <li>Explain the various task environment types with examples. [Duplicate] (8)</li>
+                        <li>What are the properties of Task Environment? Explain. (7)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-7', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-7">
+                <p>An environment in artificial intelligence is the surrounding of the agent. The agent takes input from the environment through sensors and delivers the output to the environment through actuators.</p>
+                
+                <h4>1. Fully Observable vs. Partially Observable</h4>
+                <ul>
+                    <li><strong>Fully Observable:</strong> The agent’s sensors can see the entire state of the environment at any point in time. There is no "hidden" information. Example: Chess (You can see the whole board).</li>
+                    <li><strong>Partially Observable:</strong> Parts of the environment are missing from the sensors due to noise, distance, or physical barriers. Example: Automated Taxi (The driver cannot see what is around a corner or inside the engine of the car in front).</li>
+                </ul>
+
+                <h4>2. Single Agent vs. Multi-Agent</h4>
+                <ul>
+                    <li><strong>Single Agent:</strong> Only one AI is acting in the environment. Example: Crossword Puzzle or a Sudoku solver.</li>
+                    <li><strong>Multi-Agent:</strong> Multiple agents are operating, and they may compete or cooperate. Example: Chess (Competitive Multi-agent) or Robotic Soccer (Cooperative Multi-agent).</li>
+                </ul>
+
+                <h4>3. Static vs. Dynamic</h4>
+                <ul>
+                    <li><strong>Static:</strong> The environment does not change while the agent is "thinking" or choosing an action. Example: Crossword Puzzle.</li>
+                    <li><strong>Dynamic:</strong> The environment keeps changing while the agent deliberates. The agent must act quickly. Example: Taxi Driving (Traffic moves while you decide to brake). (Note: Semi-dynamic is when the environment doesn't change, but the agent's performance score decreases over time—e.g., a timed Chess game).</li>
+                </ul>
+
+                <h4>4. Discrete vs. Continuous</h4>
+                <ul>
+                    <li><strong>Discrete:</strong> There are a finite/limited number of distinct states and actions. Example: Chess (A fixed number of squares and specific moves).</li>
+                    <li><strong>Continuous:</strong> States and actions are fluid and infinite (often involving speed, location, or time). Example: Self-driving car (The steering angle and speed can be 10.1, 10.11, 10.112...).</li>
+                </ul>
+
+                <h4>5. Episodic vs. Sequential</h4>
+                <ul>
+                    <li><strong>Episodic:</strong> The agent's experience is divided into "atomic episodes." The action taken in one episode does not affect the next. Example: Part-picking Robot (Picking one defective part doesn't change how it picks the next one).</li>
+                    <li><strong>Sequential:</strong> Current decisions affect all future decisions. You must plan ahead. Example: Chess or Taxi Driving (Turning left now determines where you can go next).</li>
+                </ul>
+
+                <h4>6. Known vs. Unknown</h4>
+                <ul>
+                    <li><strong>Known:</strong> The agent (or designer) knows the "rules of the world" or the laws of physics that govern the environment. Example: Video Game (The code defines exactly what happens if you jump).</li>
+                    <li><strong>Unknown:</strong> The agent must learn how the world works by trial and error. Example: New planet exploration (A rover doesn't know the soil consistency until it touches it).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="answer-card">
+            <div class="answer-header">
+                <div class="topic-info">
+                    <span class="answer-topic">Topic 8: Structure of Agents</span>
+                    <ul class="exam-questions-list">
+                        <li>Explain the structure of an agent. (3)</li>
+                        <li>Explain the structure of an agent. [Duplicate] (3)</li>
+                        <li>Explain the structure of an agent. [Duplicate 2] (3)</li>
+                        <li>Describe any two ways to represent states and the transitions between components in agent programs. (3)</li>
+                        <li>Describe in detail about different types of Agent programs with suitable figures. (8)</li>
+                        <li>Explain the various type of agents. (8)</li>
+                        <li>Explain the various type of agents. [Duplicate] (8)</li>
+                        <li>Explain the structure and Goal-based agents and Utility-based agents with the help of diagrams. (8)</li>
+                        <li>With diagram compare model based reflex agent and simple reflex agent programs. (8)</li>
+                        <li>Explain learning agent with a neat diagram. (8)</li>
+                        <li>Explain learning agent with a neat diagram. [Duplicate] (8)</li>
+                    </ul>
+                </div>
+                <button class="toggle-btn" onclick="toggleAnswer('ans-body-8', this)">Show Answer</button>
+            </div>
+            <div class="answer-body" id="ans-body-8">
+                <p>agents structure can be viewed as agent = architecture + agent program<br>
+                architecture the machinery that an agent executes on<br>
+                agent program = an implementation of an agent function</p>
+
+                <h4>Simple Reflex Agent</h4>
+                <ul>
+                    <li>They choose actions only based on the current percept.</li>
+                    <li>They are rational only if a correct decision is made only on the basis of current percept.</li>
+                    <li>Their environment is completely observable.</li>
+                    <li><strong>Condition-action Rule:</strong> It is a rule that maps a state (condition) to an action.</li>
+                </ul>
+<pre class="ascii-art">
++---------------------------------------------------+
+              |                                                   |
+              |                  +-----------+                    |
+              |               -> |  Sensors  |                    |
+              |              |   +-----+-----+                    |
+              |              |         |                          |
++-------------+              |         v                          |
+|             | -------------    +-----------------------+        |
+|             |                  | How is the world      |        |
+|             |                  | like now?             |        |
+|             |                  +-------+---------------+        |
+| Environment |                          |                        |
+|             |                          v                        |
+|             |                  +-----------------------+        |      +------------------+
+|             |                  | What action I need    |        |      | Condition-Action |
+|             |                  | to do?                | <-------------| Rule             |
+|             |                  +-------+---------------+        |      +------------------+
+|             |                          |                        |
+|             | <------------            v                        |
++-------------+              |     +-----------+                  |
+                             |     | Effectors |                  |
+                              ---- +-----------+                  |
+                                                                  |
+              +---------------------------------------------------+
+</pre>
+
+                <h4>Model Based Reflex Agents</h4>
+                <p>They use a model of the world to choose their actions. They maintain an internal state.</p>
+                <ul>
+                    <li><strong>Model &Rightarrow;</strong> knowledge about "how the things happen in the world."</li>
+                    <li><strong>Internal State &Rightarrow;</strong> It is a representation (rep^n) of unobserved aspects of current state depending on percept history.</li>
+                </ul>
+                <p>Updating the state requires the information about:</p>
+                <ul>
+                    <li>How the world evolves</li>
+                    <li>How the agent's actions affect the world</li>
+                </ul>
+<pre class="ascii-art">
++-------------------------------------------------------+
+              |                         Agent                         |
+              |                                                       |
+              |                  +-----------+                        |
+              |               -> |  Sensors  |                        |
+              |              |   +-----+-----+                        |
+              |              |         |                              |
++-------------+              |         v               +-------+      |
+|             | -------------    +---------------+ <-- | State |      |
+|             |                  | How is the    |     +-------+      |
+|             |                  | world like    | <-- +-------------+|
+|             |                  | now?          |     | How world   ||
+| Environment |                  +-------+-------+     | evolves     ||
+|             |                          |             +-------------+|
+|             |                          |         <-- +-------------+|
+|             |                          |             | What my     ||
+|             |                          v             | actions do  ||
+|             |                  +---------------+     +-------------+|
+|             |                  | What action   |                    |
+|             |                  | need to do 2  | <-- +-------------+|
+|             | <------------    +-------+-------+     | Condn -     ||
+|             |              |           |             | Action Rule ||
++-------------+              |           v             +-------------+|
+                             |     +-----------+                      |
+                             |     | Effectors |                      |
+                              ---- +-----------+                      |
+              |                                                       |
+              +-------------------------------------------------------+
+</pre>
+
+                <h4>Goal Based Agents</h4>
+                <p>They choose their actions in order to achieve goals.</p>
+                <p>Goal-based approach is more flexible than reflex agent since the knowledge supporting a decision is explicitly modeled, thereby allowing for modifications.</p>
+                <p><strong>Goal:</strong> It is the description of desirable situation.</p>
+<pre class="ascii-art">
++-------------------------------------------------------+
+              |                         Agent                         |
+              |                                                       |
+              |                  +-----------+                        |
+              |               -> |  Sensors  |                        |
+              |              |   +-----+-----+                        |
+              |              |         |                              |
++-------------+              |         v               +-------+      |
+|             | -------------    +---------------+ <-- | State |      |
+|             |                  | How is the    |     +-------+      |
+|             |                  | world like    | <-- +-------------+|
+|             |                  | now?          |     | How world   ||
+| Environment |                  +-------+-------+     | evolves     ||
+|             |                          |             +-------------+|
+|             |                          v                            |
+|             |                  +---------------+     +-------------+|
+|             |                  | What happens  | <-- | What my     ||
+|             |                  | if I do       |     | actions do  ||
+|             |                  | action A?     |     +-------------+|
+|             |                  +-------+-------+                    |
+|             |                          |             +-------+      |
+|             |                          v         <-- | Goals |      |
+|             |                  +---------------+     +-------+      |
+|             |                  | What actions  |                    |
+|             |                  | I need to do? |                    |
+|             | <------------    +-------+-------+                    |
+|             |              |           |                            |
++-------------+              |           v                            |
+                             |     +-----------+                      |
+                             |     | Effectors |                      |
+                              ---- +-----------+                      |
+              |                                                       |
+              +-------------------------------------------------------+
+</pre>
+
+                <h4>Utility Based Agents</h4>
+                <p>They choose actions based on preference (utility) for each state.</p>
+                <p>Goals are inadequate when:</p>
+                <ul>
+                    <li>There are conflicting goals out of which only few can be achieved.</li>
+                    <li>Goals have some uncertainty of being achieved and you need to weigh likelihood of success against the importance of a goal.</li>
+                </ul>
+<pre class="ascii-art">
++-------------------------------------------------------+
+              |                         Agent                         |
+              |                                                       |
+              |                  +-----------+                        |
+              |               -> |  Sensors  |                        |
+              |              |   +-----+-----+                        |
+              |              |         |                              |
++-------------+              |         v               +-------+      |
+|             | -------------    +---------------+ <-- | State |      |
+|             |                  | How is the    |     +-------+      |
+|             |                  | world like    | <-- +-------------+|
+|             |                  | now?          |     | How world   ||
+| Environment |                  +-------+-------+     | evolves     ||
+|             |                          |             +-------------+|
+|             |                          v                            |
+|             |                  +---------------+     +-------------+|
+|             |                  | What happens  | <-- | What my     ||
+|             |                  | if I do       |     | actions do  ||
+|             |                  | action A?     |     +-------------+|
+|             |                  +-------+-------+                    |
+|             |                          |             +---------+    |
+|             |                          v         <-- | Utility |    |
+|             |                  +---------------+     +---------+    |
+|             |                  | How happy I am|                    |
+|             |                  | by doing      |                    |
+|             |                  | action A?     |                    |
+|             |                  +-------+-------+                    |
+|             |                          |                            |
+|             |                          v                            |
+|             |                  +---------------+                    |
+|             |                  | What actions  |                    |
+|             |                  | I need to do? |                    |
+|             | <------------    +-------+-------+                    |
+|             |              |           |                            |
++-------------+              |           v                            |
+                             |     +-----------+                      |
+                             |     | Effectors |                      |
+                              ---- +-----------+                      |
+              |                                                       |
+              +-------------------------------------------------------+
+</pre>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function toggleAnswer(elementId, btn) {
+        const el = document.getElementById(elementId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+            btn.innerText = 'Show Answer';
+        } else {
+            el.style.display = 'block';
+            btn.innerText = 'Hide Answer';
+        }
+    }
+</script>
+</body>
+</html>
